@@ -18,10 +18,10 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import FlexBetween from "components/FlexBetween";
+import Dropzone from "react-dropzone";
 import UserImage from "components/UserImage";
 import WidgetWrapper from "components/WidgetWrapper";
 import { useState } from "react";
-import Dropzone from "react-dropzone";
 import { useDispatch, useSelector } from "react-redux";
 import { setPosts } from "state";
 
@@ -51,7 +51,6 @@ const MyPostWidget = ({ picturePath }) => {
       headers: { Authorization: `Bearer ${token}` },
       body: formData,
     });
-
     const posts = await response.json();
     dispatch(setPosts({ posts }));
     setImage(null);
@@ -76,15 +75,15 @@ const MyPostWidget = ({ picturePath }) => {
       </FlexBetween>
       {isImage && (
         <Box
-          borderRadius="5px"
           border={`1px solid ${medium}`}
+          borderRadius="5px"
           mt="1rem"
           p="1rem"
         >
           <Dropzone
-            acceptedFiles=".jpg, .jpeg, .png"
+            acceptedFiles=".jpg,.jpeg,.png"
             multiple={false}
-            onDrop={(acceptedFiles) => setImage("picture", acceptedFiles[0])}
+            onDrop={(acceptedFiles) => setImage(acceptedFiles[0])}
           >
             {({ getRootProps, getInputProps }) => (
               <FlexBetween>
@@ -93,11 +92,11 @@ const MyPostWidget = ({ picturePath }) => {
                   border={`2px dashed ${palette.primary.main}`}
                   p="1rem"
                   width="100%"
-                  sx={{ "$:hover": { cursor: "pointer" } }}
+                  sx={{ "&:hover": { cursor: "pointer" } }}
                 >
                   <input {...getInputProps()} />
                   {!image ? (
-                    <p>Add image here</p>
+                    <p>Add Image Here</p>
                   ) : (
                     <FlexBetween>
                       <Typography>{image.name}</Typography>
@@ -122,12 +121,7 @@ const MyPostWidget = ({ picturePath }) => {
       <Divider sx={{ margin: "1.25rem 0" }} />
 
       <FlexBetween gap='1rem'>
-        <FlexBetween
-          gap="0.25rem"
-          onClick={() => {
-            setIsImage(!isImage);
-          }}
-        >
+        <FlexBetween gap="0.25rem" onClick={() => setIsImage(!isImage)}>
           <ImageOutlined sx={{ color: mediumMain }} />
           <Typography
             color={mediumMain}
@@ -169,7 +163,7 @@ const MyPostWidget = ({ picturePath }) => {
             borderRadius: "3rem",
           }}
         >
-          POST  
+          POST
         </Button>
       </FlexBetween>
     </WidgetWrapper>

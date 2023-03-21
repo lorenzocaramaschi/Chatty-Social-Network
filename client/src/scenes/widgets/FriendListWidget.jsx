@@ -22,9 +22,10 @@ const FriendListWidget = ({ userId }) => {
     const data = await response.json();
     dispatch(setFriends({ friends: data }));
   };
+
   useEffect(() => {
     getFriends();
-  }, []);  // eslint-disable-line react-hooks/exhaustive-deps
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <WidgetWrapper>
@@ -36,7 +37,7 @@ const FriendListWidget = ({ userId }) => {
       >
         Friend List
       </Typography>
-      <Box display="flex" flexDirecion="column" gap="1.5rem">
+      <Box display="flex" flexDirection="column" gap="1.5rem">
         {friends.map((friend) => (
           <Friend
             key={friend._id}

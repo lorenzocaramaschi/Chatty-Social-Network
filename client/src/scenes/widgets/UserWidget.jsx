@@ -32,7 +32,7 @@ const UserWidget = ({ userId, picturePath }) => {
 
   useEffect(() => {
     getUser();
-  }, []); //eslint-disable-line react-hooks/exhaustive-deps
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!user) {
     return null;
@@ -50,7 +50,7 @@ const UserWidget = ({ userId, picturePath }) => {
 
   return (
     <WidgetWrapper>
-      {/* First row */}
+      {/* FIRST ROW */}
       <FlexBetween
         gap="0.5rem"
         pb="1.1rem"
@@ -79,7 +79,8 @@ const UserWidget = ({ userId, picturePath }) => {
       </FlexBetween>
 
       <Divider />
-      {/* Second Row */}
+
+      {/* SECOND ROW */}
       <Box p="1rem 0">
         <Box display="flex" alignItems="center" gap="1rem" mb="0.5rem">
           <LocationOnOutlined fontSize="large" sx={{ color: main }} />
@@ -93,10 +94,10 @@ const UserWidget = ({ userId, picturePath }) => {
 
       <Divider />
 
-      {/* Third Row */}
+      {/* THIRD ROW */}
       <Box p="1rem 0">
         <FlexBetween mb="0.5rem">
-          <Typography color={medium}>Profile views</Typography>
+          <Typography color={medium}>Who's viewed your profile</Typography>
           <Typography color={main} fontWeight="500">
             {viewedProfile}
           </Typography>
@@ -111,7 +112,7 @@ const UserWidget = ({ userId, picturePath }) => {
 
       <Divider />
 
-      {/* Fourth Row */}
+      {/* FOURTH ROW */}
       <Box p="1rem 0">
         <Typography fontSize="1rem" color={main} fontWeight="500" mb="1rem">
           Social Profiles
@@ -135,7 +136,7 @@ const UserWidget = ({ userId, picturePath }) => {
             <img src="../assets/linkedin.png" alt="linkedin" />
             <Box>
               <Typography color={main} fontWeight="500">
-                LinkedIn
+                Linkedin
               </Typography>
               <Typography color={medium}>Network Platform</Typography>
             </Box>
