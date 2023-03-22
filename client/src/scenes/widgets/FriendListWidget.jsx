@@ -3,6 +3,7 @@ import Friend from "components/Friend";
 import WidgetWrapper from "components/WidgetWrapper";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { json } from "react-router-dom";
 import { setFriends } from "state";
 
 const FriendListWidget = ({ userId }) => {
@@ -10,6 +11,7 @@ const FriendListWidget = ({ userId }) => {
   const { palette } = useTheme();
   const token = useSelector((state) => state.token);
   const friends = useSelector((state) => state.user.friends);
+  
 
   const getFriends = async () => {
     const response = await fetch(
