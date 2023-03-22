@@ -24,8 +24,6 @@ import WidgetWrapper from "components/WidgetWrapper";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setPosts } from "state";
-import { json } from "react-router-dom";
-
 
 const MyPostWidget = ({ picturePath }) => {
   const dispatch = useDispatch();
@@ -53,9 +51,7 @@ const MyPostWidget = ({ picturePath }) => {
       headers: { Authorization: `Bearer ${token}` },
       body: formData,
     });
-
-    
-    const posts = json(response);
+    const posts = await response.json();
     dispatch(setPosts({ posts }));
     setImage(null);
     setPost("");

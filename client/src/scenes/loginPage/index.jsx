@@ -12,9 +12,9 @@ const LoginPage = () => {
         backgroundColor={theme.palette.background.alt}
         p="1rem 6%"
         textAlign="center"
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
+        display='flex'
+        alignItems='center'
+        justifyContent='center'
       >
         <ChatBubble color="primary" />
         <Typography fontWeight="bold" fontSize="32px" color="primary">

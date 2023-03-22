@@ -10,7 +10,6 @@ import Friend from "components/Friend";
 import WidgetWrapper from "components/WidgetWrapper";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { json } from "react-router-dom";
 import { setPost } from "state";
 
 const PostWidget = ({
@@ -44,8 +43,7 @@ const PostWidget = ({
       },
       body: JSON.stringify({ userId: loggedInUserId }),
     });
-    
-    const updatedPost = await json(response);
+    const updatedPost = await response.json();
     dispatch(setPost({ post: updatedPost }));
   };
 
@@ -66,7 +64,7 @@ const PostWidget = ({
           height="auto"
           alt="post"
           style={{ borderRadius: "0.75rem", marginTop: "0.75rem" }}
-          src={`http://localhost:3001/assets/${picturePath}`}
+          src={`${process.env.REACT_APP_SERVER_URL}/assets/${picturePath}`}
         />
       )}
       <FlexBetween mt="0.25rem">

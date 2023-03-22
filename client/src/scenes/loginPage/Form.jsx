@@ -10,12 +10,11 @@ import {
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import { Formik } from "formik";
 import * as yup from "yup";
-import { json, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setLogin } from "state";
 import Dropzone from "react-dropzone";
 import FlexBetween from "components/FlexBetween";
-
 
 const registerSchema = yup.object().shape({
   firstName: yup.string().required("required"),
@@ -71,8 +70,7 @@ const Form = () => {
         body: formData,
       }
     );
-        
-    const savedUser = await json(savedUserResponse);
+    const savedUser = await savedUserResponse.json();
     onSubmitProps.resetForm();
 
     if (savedUser) {
@@ -86,8 +84,7 @@ const Form = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
     });
-       
-    const loggedIn = await json(loggedInResponse);
+    const loggedIn = await loggedInResponse.json();
     onSubmitProps.resetForm();
     if (loggedIn) {
       dispatch(
