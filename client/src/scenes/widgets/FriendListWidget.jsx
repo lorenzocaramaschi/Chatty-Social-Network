@@ -19,7 +19,8 @@ const FriendListWidget = ({ userId }) => {
         headers: { Authorization: `Bearer ${token}` },
       }
     );
-    const data = await response.json();
+    response = JSON.parse(response)
+    const data = await response;
     dispatch(setFriends({ friends: data }));
   };
 

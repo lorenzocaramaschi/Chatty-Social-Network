@@ -32,7 +32,9 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
         },
       }
     );
-    const data = await response.json();
+
+    response = JSON.parse(json.stringify(response))
+    const data = await response;
     dispatch(setFriends({ friends: data }));
   };
 
