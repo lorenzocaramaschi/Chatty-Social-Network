@@ -10,6 +10,7 @@ import Friend from "components/Friend";
 import WidgetWrapper from "components/WidgetWrapper";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { json } from "react-router-dom";
 import { setPost } from "state";
 
 const PostWidget = ({
@@ -43,8 +44,8 @@ const PostWidget = ({
       },
       body: JSON.stringify({ userId: loggedInUserId }),
     });
-    response = JSON.parse(response)
-    const updatedPost = await response;
+    
+    const updatedPost = await json(response);
     dispatch(setPost({ post: updatedPost }));
   };
 

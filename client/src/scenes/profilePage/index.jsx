@@ -19,9 +19,8 @@ const ProfilePage = () => {
     const response = await fetch(`http://localhost:3001/users/${userId}`, {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
-    });
-    response = JSON.parse(json.stringify(response));
-    const data = await response;
+    });    
+    const data = await json(response);
     setUser(data);
   };
 

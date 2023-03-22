@@ -71,8 +71,8 @@ const Form = () => {
         body: formData,
       }
     );
-    savedUserResponse = JSON.parse(json.stringify(savedUserResponse))    
-    const savedUser = await savedUserResponse;
+        
+    const savedUser = await json(savedUserResponse);
     onSubmitProps.resetForm();
 
     if (savedUser) {
@@ -86,8 +86,8 @@ const Form = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
     });
-    loggedInResponse = JSON.parse(json.stringify(loggedInResponse))    
-    const loggedIn = await loggedInResponse;
+       
+    const loggedIn = await json(loggedInResponse);
     onSubmitProps.resetForm();
     if (loggedIn) {
       dispatch(
